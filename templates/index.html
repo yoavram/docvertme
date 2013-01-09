@@ -7,6 +7,8 @@
     <a class="brand" href="#">Docvertme</a>
     <ul class="nav">
       <li class="active"><a href="#"><i class="icon-home"></i> Home</a></li>
+      <li><a href="#"><i class="icon-question-sign"></i> Help</a></li>
+
     </ul>
   </div>
 </div>
@@ -23,7 +25,7 @@
 	  </script>
 	</div>
 	<div class="btn-group">
-	  <button class="btn" id="share-btn">Share</button>
+	  <button class="btn" id="share-btn"><i class="icon-share"></i> Share</button>
 	  <input type="url" name="share-url" id="share-url" style="margin: auto 5px; display: none;">
 	  <script type="text/javascript">
 	  	$('#share-btn').click(share_btn_click);
@@ -42,13 +44,42 @@
 
 
 <div id="main">
-	<textarea class="editor-input" id="editor-input" rows="15" col="150">
+	<textarea class="editor-input" id="editor-input">
 {{ content }}
 	</textarea>
+</div>
+<div id="api-docs" style="word-wrap:break-word;">
+<h2> REST API</h2>
+<h3><i class="icon-pencil"></i> Edit</h3>
+<code>
+	http://hostname/edit/&lt;content>
+</code>
+<h3>Example</h3>
+<code>
+	<a href="http://hostname/edit/%23%20Example%0AThis%20is%20an%20example%20of%20a%20markdown%20document!%0A%09#">
+		http://hostname/edit/%23%20Example%0AThis%20is%20an%20example%20of%20a%20markdown%20document!%0A%09#
+	</a>
+</code>
+<h3><i class="icon-file"></i> Convert</h3>
+<code>
+	http://hostname/convert/&lt;from_format>/&lt;to_format>/&lt;content>
+</code>
+<h3>Example</h3>
+<code>
+	<a href="http://hostname/convert/markdown/html/%23%20Example%0AThis%20is%20an%20example%20of%20a%20markdown%20document!%0A%09#">http://hostname/convert/markdown/html/%23%20Example%0AThis%20is%20an%20example%20of%20a%20markdown%20document!%0A%09#</a>
+</code>
+<script type="text/javascript">
+	$(function() {
+		var html = $('#api-docs').html();
+		html = html.replace(/hostname/g, document.location.host);
+		$('#api-docs').html(html);
+	})
+</script>
 </div>
 {% endblock left %}
 
 {% block right %}
+
 {% endblock right %}	
 
 {% block footer %}
