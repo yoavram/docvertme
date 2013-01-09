@@ -2,86 +2,84 @@
 
 {% block header %}
 
-<div class="navbar">
-  <div class="navbar-inner">
-    <a class="brand" href="#">Docvertme</a>
-    <ul class="nav">
-      <li class="active"><a href="#"><i class="icon-home"></i> Home</a></li>
-      <li><a href="#"><i class="icon-question-sign"></i> Help</a></li>
-
-    </ul>
-  </div>
+<div class="page-header">
+  <h1>Docvertme <small>Convert and Share Markdown to Multiple Formats wih <a href="http://www.docverter.com/">Docverter</a></small></h1>
 </div>
 
 <div class="btn-toolbar">
 	<div class="btn-group">
-	  <button class="btn" id="to_PDF">PDF</button>
-	  <button class="btn" id="to_HTML">HTML</button>
-	  <button class="btn" id="to_DOCX">DOCX</button>
-	  <script type="text/javascript">
-	  	$(function() {
-	  		$('[id^=to_]').click(convert_btn_click);
-	  	})
-	  </script>
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+			<i class="icon-file"></i> Convert
+			<span class="caret"></span>
+		</a>
+		<ul class="dropdown-menu">
+			<li><a href="#" id="to_PDF">PDF</a></li>
+			<li><a href="#" id="to_HTML">HTML</a></li>
+		</ul>
+		<script type="text/javascript">
+		$(function() {
+			$('[id^=to_]').click(convert_btn_click);
+		})
+		</script>
 	</div>
 	<div class="btn-group">
-	  <button class="btn" id="share-btn"><i class="icon-share"></i> Share</button>
-	  <input type="url" name="share-url" id="share-url" style="margin: auto 5px; display: none;">
-	  <script type="text/javascript">
-	  	$('#share-btn').click(share_btn_click);
-	  </script>
-</div>
-
-<div class="alert span10 offset1" id="general-alert" style="display: none">
-	<button type="button" class="close" onclick="$('#general-alert').hide()">&times;</button>
-	<div id="general-alert-message">
+		<button class="btn" id="share-btn"><i class="icon-share"></i> Share</button>
+		<input type="url" name="share-url" id="share-url" style="margin: auto 5px; display: none;">
+		<script type="text/javascript">
+		$('#share-btn').click(share_btn_click);
+		</script>
 	</div>
-</div>
 
-{% endblock header %}
+	<div class="alert span10 offset1" id="general-alert" style="display: none">
+		<button type="button" class="close" onclick="$('#general-alert').hide()">&times;</button>
+		<div id="general-alert-message">
+		</div>
+	</div>
 
-{% block left %}
+	{% endblock header %}
+
+	{% block left %}
 
 
-<div id="main">
-	<textarea class="editor-input" id="editor-input">
+	<div id="main">
+		<textarea class="editor-input" id="editor-input">
 {{ content }}
-	</textarea>
-</div>
-<div id="api-docs" style="word-wrap:break-word;">
-<h2> REST API</h2>
-<h3><i class="icon-pencil"></i> Edit</h3>
-<code>
-	http://hostname/edit/&lt;content>
-</code>
-<h3>Example</h3>
-<code>
-	<a href="http://hostname/edit/%23%20Example%0AThis%20is%20an%20example%20of%20a%20markdown%20document!%0A%09#">
-		http://hostname/edit/%23%20Example%0AThis%20is%20an%20example%20of%20a%20markdown%20document!%0A%09#
-	</a>
-</code>
-<h3><i class="icon-file"></i> Convert</h3>
-<code>
-	http://hostname/convert/&lt;from_format>/&lt;to_format>/&lt;content>
-</code>
-<h3>Example</h3>
-<code>
-	<a href="http://hostname/convert/markdown/html/%23%20Example%0AThis%20is%20an%20example%20of%20a%20markdown%20document!%0A%09#">http://hostname/convert/markdown/html/%23%20Example%0AThis%20is%20an%20example%20of%20a%20markdown%20document!%0A%09#</a>
-</code>
-<script type="text/javascript">
-	$(function() {
-		var html = $('#api-docs').html();
-		html = html.replace(/hostname/g, document.location.host);
-		$('#api-docs').html(html);
-	})
-</script>
-</div>
-{% endblock left %}
+		</textarea>
+	</div>
+	<div id="api-docs" style="word-wrap:break-word;">
+		<h2> REST API</h2>
+		<h3><i class="icon-pencil"></i> Edit</h3>
+		<code>
+			http://hostname/edit/&lt;content>
+		</code>
+		<h3>Example</h3>
+		<code>
+			<a href="http://hostname/edit/%23%20Example%0AThis%20is%20an%20example%20of%20a%20markdown%20document!%0A%09#">
+				http://hostname/edit/%23%20Example%0AThis%20is%20an%20example%20of%20a%20markdown%20document!%0A%09#
+			</a>
+		</code>
+		<h3><i class="icon-file"></i> Convert</h3>
+		<code>
+			http://hostname/convert/&lt;from_format>/&lt;to_format>/&lt;content>
+		</code>
+		<h3>Example</h3>
+		<code>
+			<a href="http://hostname/convert/markdown/html/%23%20Example%0AThis%20is%20an%20example%20of%20a%20markdown%20document!%0A%09#">http://hostname/convert/markdown/html/%23%20Example%0AThis%20is%20an%20example%20of%20a%20markdown%20document!%0A%09#</a>
+		</code>
+		<script type="text/javascript">
+		$(function() {
+			var html = $('#api-docs').html();
+			html = html.replace(/hostname/g, document.location.host);
+			$('#api-docs').html(html);
+		})
+		</script>
+	</div>
+	{% endblock left %}
 
-{% block right %}
+	{% block right %}
 
-{% endblock right %}	
+	{% endblock right %}	
 
-{% block footer %}
+	{% block footer %}
 
-{%endblock footer %}	
+	{%endblock footer %}	
