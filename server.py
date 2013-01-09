@@ -9,6 +9,7 @@ DOCVERTER_URL =   'http://c.docverter.com/convert'
 FILES_FOLDER = 'files'
 if not os.path.exists(FILES_FOLDER):
     os.mkdir(FILES_FOLDER)
+DEFAULT_TEXT = u"# Example\nThis is an example of a markdown document!".encode('utf8')
 
 app = Flask(__name__)
 app.config.from_object(__name__)  
@@ -40,10 +41,18 @@ def save_text_file(filename, content):
 
 @app.route("/")
 def index():
-    content = u"# Example\nThis is an example of a markdown document!".encode('utf8')
+    content = app.config['DEFAULT_TEXT']
     quoted = urllib2.quote(content)
     return "Syntax:<br>http://..../convert/&lt;from_format>/&lt;to_format>/&lt;content><br>Example:<br>http://..../convert/markdown/html/" + quoted + "<br>"
 	
+@app.route("/main")
+def main():
+    return render_template("index.html", content=app.config['DEFAULT_TEXT'])
+
+@app.route("/edit/<string:content>")
+def edit(content):
+    return render_template("index.html", content=content)
+
 @app.route("/convert/<string:from_format>/<string:to_format>/<string:content>")
 def convert(from_format, to_format, content):
     content = urllib2.unquote(content).decode('utf8')
