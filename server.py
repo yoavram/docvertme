@@ -41,12 +41,6 @@ def save_text_file(filename, content):
 
 @app.route("/")
 def index():
-    content = app.config['DEFAULT_TEXT']
-    quoted = urllib2.quote(content)
-    return "Syntax:<br>http://..../convert/&lt;from_format>/&lt;to_format>/&lt;content><br>Example:<br>http://..../convert/markdown/html/" + quoted + "<br>"
-	
-@app.route("/main")
-def main():
     return render_template("index.html", content=app.config['DEFAULT_TEXT'])
 
 @app.route("/edit/<string:content>")
