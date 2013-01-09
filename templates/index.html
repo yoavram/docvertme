@@ -11,15 +11,23 @@
   </div>
 </div>
 
-<div class="btn-group">
-  <button class="btn" id="to_PDF">PDF</button>
-  <button class="btn" id="to_HTML">HTML</button>
-  <button class="btn" id="to_DOCX">DOCX</button>
-  <script type="text/javascript">
-  	$(function() {
-  		$('[id^=to_]').click(convert_btn_click);
-  	})
-  </script>
+<div class="btn-toolbar">
+	<div class="btn-group">
+	  <button class="btn" id="to_PDF">PDF</button>
+	  <button class="btn" id="to_HTML">HTML</button>
+	  <button class="btn" id="to_DOCX">DOCX</button>
+	  <script type="text/javascript">
+	  	$(function() {
+	  		$('[id^=to_]').click(convert_btn_click);
+	  	})
+	  </script>
+	</div>
+	<div class="btn-group">
+	  <button class="btn" id="share-btn">Share</button>
+	  <input type="url" name="share-url" id="share-url" style="margin: auto 5px; display: none;">
+	  <script type="text/javascript">
+	  	$('#share-btn').click(share_btn_click);
+	  </script>
 </div>
 
 <div class="alert span10 offset1" id="general-alert" style="display: none">
