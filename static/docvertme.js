@@ -12,10 +12,14 @@ function convert_btn_click() {
 }
 
 function share_btn_click() {
-	var content = url_encode(get_content());
-	var url = document.location.protocol + '//' + document.location.host+ '/edit/' + content;
-	$('#share-url').val(url);
-	$('#share-url').show();
+	if ($('#share-url').is(":hidden")) {
+		var content = url_encode(get_content());
+		var url = document.location.protocol + '//' + document.location.host+ '/edit/' + content;
+		$('#share-url').val(url);
+		$('#share-url').show();
+	} else {
+		$('#share-url').hide();
+	}
 }
 
 function url_encode(string) {
