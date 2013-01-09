@@ -40,12 +40,15 @@ def save_text_file(filename, content):
 
 @app.route("/")
 def index():
-    content = u"# Example\nThis is an example of a markdown document!"
+    content = u"# Example\nThis is an example of a markdown document!".encode('utf8')
     quoted = urllib2.quote(content)
     return "Syntax:<br>http://..../convert/&lt;from_format>/&lt;to_format>/&lt;content><br>Example:<br>http://..../convert/markdown/html/" + quoted + "<br>"
 	
 @app.route("/convert/<string:from_format>/<string:to_format>/<string:content>")
 def convert(from_format, to_format, content):
+    content = urllib2.unquote(content).decode('utf8')
+    content = content.replace("+"," ")
+    print content
     infile = save_text_file("tmp." + from_format, content)
     outfile = docverter(infile, from_format, to_format)
     if outfile:
