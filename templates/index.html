@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block header %}
+
+<div class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="#">Docvertme</a>
+    <ul class="nav">
+      <li class="active"><a href="#"><i class="icon-home"></i> Home</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="btn-group">
+  <button class="btn" id="to_PDF">PDF</button>
+  <button class="btn" id="to_HTML">HTML</button>
+  <button class="btn" id="to_DOCX">DOCX</button>
+  <script type="text/javascript">
+  	$(function() {
+  		$('[id^=to_]').click(convert_btn_click);
+  	})
+  </script>
+</div>
+
+<div class="alert span10 offset1" id="general-alert" style="display: none">
+	<button type="button" class="close" onclick="$('#general-alert').hide()">&times;</button>
+	<div id="general-alert-message">
+	</div>
+</div>
+
+{% endblock header %}
+
+{% block left %}
+
+
+<div id="main">
+	<textarea class="editor-input" id="editor-input" rows="15" col="150">
+{{ content }}
+	</textarea>
+</div>
+{% endblock left %}
+
+{% block right %}
+{% endblock right %}	
+
+{% block footer %}
+
+{%endblock footer %}	

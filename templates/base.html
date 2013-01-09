@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>{% block title %} Docvertme {% endblock title %}</title>
+	<meta name="description" content="" />
+	<meta name="author" content="Yoav Ram">
+	<meta name="keywords" content="">
+	<meta charset="UTF-8">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link rel="icon" type="image/ico" href="/static/favicon.ico">
+
+	<!-- Le style -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="/static/bootstrap.css" rel="stylesheet">
+	<link href="/static/bootstrap-responsive.css" rel="stylesheet">
+	<link href="/static/docvertme.css" rel="stylesheet">
+
+	<!-- Le JS -->
+	<script type="text/javascript" src="/static/jquery.js"></script>
+	<script type="text/javascript" src="/static/bootstrap.js"></script>	
+	<script type="text/javascript" src="/static/docvertme.js"></script>
+
+	{% block head %}
+	{% endblock head %}
+
+	<script type="text/javascript">
+	window.onload = function() {
+		$('[rel=tooltip]').tooltip({'toggle':'hover', 'placement':'bottom'});
+	}
+	</script>
+</head>
+
+
+<body>
+
+<div class="row-fluid">
+	<!-- HEADER -->
+
+	{% block header %}
+	{% endblock header %}
+
+</div>
+
+	<!-- BODY -->	
+	<div class="row-fluid">
+		<div class="span8" id="left-panel">
+
+			{% block left %}
+			
+			{% endblock left %}
+
+
+		</div>
+		<div class="span4" id="right-panel">
+			{% block right %}
+			{% endblock right %}		
+		</div>
+
+	</div>
+
+	<!-- FOOTER -->
+	<div class="row-fluid">
+		<div class="span10 offset1">
+			<footer class="colophon"> 
+				{% block footer %}
+				{% endblock footer %}
+
+				<ul class="quick-links">
+					<li> 
+							<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">
+								<img alt="Creative Commons License" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png"></a>
+					</li>
+					<li><a href="http://blog.getbootstrap.com/">Twitter Bootstrap</a></li>
+					<li><a href="http://glyphicons.com/" title="CC BY-SA 3.0">Glyphicons Free</a><li>
+					<li><a href="http://python.org/">Python</a></li>
+					<li><a href="http://flask.pocoo.org/">Flask</a></li>
+					<li><a href="http://jquery.com/">jQuery</a></li>
+
+					<li><a href="http://www.github.com/">GitHub</a></li>	
+					<li><a href="http://www.docverter.com/">Docverter</a></li>
+					<li><a href="https://github.com/yoavram/docvertme">Docvertme</a></li>
+					</ul>
+
+				</footer>
+			</div>
+		</div>
+
+	</body>
+</html>
